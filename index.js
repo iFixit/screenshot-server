@@ -22,6 +22,14 @@ const routes = {
     channel.sendToQueue("jobs", Buffer.from(url.toString()));
     ctx.body = "Job queued";
   },
+  status: async (ctx) => {
+    const conn = await rabbit;
+    const channel = await conn.createChannel();
+    const info = await channel.assertQueue("jobs", {
+      durable: false,
+    });
+    ctx.body = info;
+  },
   screenshot: async (ctx) => {
     const deploy = await utils.deploy();
     const url = utils.checkUrl(ctx.query.url);
@@ -45,6 +53,7 @@ const routes = {
 app.use(cors());
 app.use(_.get("/start", routes.start));
 app.use(_.get("/screenshot", routes.screenshot));
+app.use(_.get("/status", routes.status));
 
 app.listen(3000, () => {
   console.log("Listening on 3000");
