@@ -12,9 +12,9 @@ rabbit.then(async (conn) => {
   channel.consume(
     "jobs",
     async function (msg) {
-      const secs = Date.now();
-      const deploy = await utils.deploy();
       const url = msg.content.toString();
+      const secs = Date.now();
+      const deploy = await utils.deploy(url);
       const key = utils.key(deploy, url);
       const filename = utils.filename(secs, key);
       console.log(filename);

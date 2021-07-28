@@ -31,12 +31,12 @@ const routes = {
     ctx.body = info;
   },
   screenshot: async (ctx) => {
-    const deploy = await utils.deploy();
     const url = utils.checkUrl(ctx.query.url);
     if (url === null) {
       ctx.status = 400;
       return;
     }
+    const deploy = await utils.deploy(url);
     const key = utils.key(deploy, url);
     const filename_glob = utils.filename("*", key);
     const filenames = glob.sync(filename_glob);
