@@ -1,0 +1,20 @@
+{
+  "name": "screenshot-server",
+  "version": "1.0.0",
+  "description": "A service which can render screenshots for a list of URLs, using an API endpoint to determine current version.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andrew Gilbert",
+  "license": "MIT",
+  "dependencies": {
+    "@koa/cors": "^3.1.0",
+    "amqplib": "^0.8.0",
+    "glob": "^7.1.7",
+    "koa": "^2.13.1",
+    "koa-route": "^3.2.0",
+    "node-fetch": "^2.6.1",
+    "puppeteer": "^10.1.0"
+  }
+}
