@@ -2,7 +2,9 @@ const fetch = require("node-fetch");
 const config = require("./config.json");
 
 exports.key = (deploy, url) => {
-  return Buffer.from(`${deploy.id}:${url}`).toString("base64");
+  return Buffer.from(`${deploy.id}:${url}`)
+    .toString("base64")
+    .replace("/", "#");
 };
 
 exports.deploy = async () => {
