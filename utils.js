@@ -1,5 +1,5 @@
 const fetch = require("node-fetch");
-const config = require("./config.json");
+const config = require("./config.js");
 
 exports.key = (deploy, url) => {
   return Buffer.from(`${deploy.id}:${url}`)
