@@ -9,7 +9,7 @@ exports.key = (deploy, url) => {
 
 exports.deploy = async (url) => {
   const parsed = new URL(url);
-  parsed.path = config.deployEndpoint;
+  parsed.pathname = config.deployEndpoint;
   parsed.search = "";
   const res = await fetch(parsed.toString());
   return await res.json();
